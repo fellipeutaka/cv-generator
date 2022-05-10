@@ -52,7 +52,7 @@ export default function EducationField({ values }: EducationFieldProps) {
               <FastField
                 name={`education[${index}].graduationYear`}
                 id={`education[${index}].graduationYear`}
-                type="text"
+                type="number"
               />
               <button type="button" onClick={() => remove(index)}>
                 X

@@ -28,12 +28,10 @@ export const CVSchema = Yup.object().shape({
         collegeName: Yup.string().required("College name is required"),
         city: Yup.string().required("City is required"),
         state: Yup.string().required("State is required"),
-        graduationYear: Yup.number()
+        graduationYear: Yup.string()
           .required("Graduation year is required")
           .min(4)
-          .max(4)
-          .positive()
-          .integer(),
+          .max(4),
       })
     )
     .nullable(),
