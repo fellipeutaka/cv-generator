@@ -1,6 +1,6 @@
 import { Form as FormikForm, Formik } from "formik";
-import * as Yup from "yup";
 import { CV } from "../types/CV";
+import { CVSchema } from "../utils/CVValidation";
 import CityField from "./Fields/City";
 import DescriptionField from "./Fields/Description";
 import EducationField from "./Fields/Education";
@@ -30,39 +30,6 @@ const initialValues: InitialValues = {
   skills: [""],
   certifications: null,
 };
-
-const CVSchema = Yup.object().shape({
-  fullName: Yup.string().required("Name is required"),
-  city: Yup.string().required("City is required"),
-  state: Yup.string().required("State is required"),
-  phone: Yup.string().required("Phone is required"),
-  email: Yup.string()
-    .required("E-mail is required")
-    .email("Must be a valid e-mail"),
-  personalDescription: Yup.string()
-    .required("Description is required")
-    .min(2, "Too short")
-    .max(35, "Too long"),
-  hasEducation: Yup.boolean(),
-  education: Yup.array()
-    .of(
-      Yup.object().shape({
-        degree: Yup.string().required("Degree is required"),
-        subjectArea: Yup.string().required("Subject area is required"),
-        collegeName: Yup.string().required("College name is required"),
-        city: Yup.string().required("City is required"),
-        state: Yup.string().required("State is required"),
-        graduationYear: Yup.number()
-          .required("Graduation year is required")
-          .min(4)
-          .max(4)
-          .positive()
-          .integer(),
-      })
-    )
-    .nullable(),
-  skills: Yup.array().of(Yup.string().required("Skill is required")),
-});
 
 export default function Form() {
   return (
