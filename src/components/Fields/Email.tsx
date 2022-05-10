@@ -1,4 +1,4 @@
-import { Field, FormikErrors, FormikTouched } from "formik";
+import { FastField, FormikErrors, FormikTouched } from "formik";
 import { InitialValues } from "../Form";
 
 type EmailFieldProps = {
@@ -10,7 +10,7 @@ export default function EmailField({ errors, touched }: EmailFieldProps) {
   return (
     <>
       <label htmlFor="email">E-mail</label>
-      <Field name="email" id="email" type="text" />
+      <FastField name="email" id="email" type="text" />
       {errors.email && touched.email ? <span>{errors.email}</span> : null}
     </>
   );

@@ -1,4 +1,4 @@
-import { Field, FieldArray } from "formik";
+import { FastField, FieldArray } from "formik";
 import { InitialValues } from "../Form";
 
 type SkillsFieldsProps = {
@@ -14,7 +14,7 @@ export default function SkillsFields({ values }: SkillsFieldsProps) {
           <>
             {values.skills.map((_, index) => (
               <div key={index}>
-                <Field
+                <FastField
                   name={`skills[${index}]`}
                   id={`skills[${index}]`}
                   type="text"

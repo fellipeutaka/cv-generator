@@ -1,4 +1,4 @@
-import { Field } from "formik";
+import { FastField } from "formik";
 import { InitialValues } from "../Form";
 
 type EducationField = {
@@ -13,7 +13,7 @@ export default function HasEducation({
   return (
     <>
       <label htmlFor="hasEducation">Has education?</label>
-      <Field
+      <FastField
         type="checkbox"
         name="hasEducation"
         id="hasEducation"

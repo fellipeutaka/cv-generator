@@ -60,10 +60,6 @@ const CVSchema = Yup.object().shape({
           .integer(),
       })
     )
-    .when("hasEducation", {
-      is: true,
-      then: Yup.array().required("Education is required"),
-    })
     .nullable(),
   skills: Yup.array().of(Yup.string().required("Skill is required")),
 });

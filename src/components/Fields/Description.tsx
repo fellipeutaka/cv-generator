@@ -1,4 +1,4 @@
-import { Field, FormikErrors, FormikTouched } from "formik";
+import { FastField, FormikErrors, FormikTouched } from "formik";
 import { InitialValues } from "../Form";
 
 type DescriptionFieldProps = {
@@ -13,7 +13,11 @@ export default function DescriptionField({
   return (
     <>
       <label htmlFor="personalDescription">Personal description</label>
-      <Field name="personalDescription" id="personalDescription" type="text" />
+      <FastField
+        name="personalDescription"
+        id="personalDescription"
+        type="text"
+      />
       {errors.personalDescription && touched.personalDescription ? (
         <span>{errors.personalDescription}</span>
       ) : null}
