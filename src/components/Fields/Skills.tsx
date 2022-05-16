@@ -1,11 +1,17 @@
-import { FastField, FieldArray } from "formik";
+import { FastField, FieldArray, FormikErrors, FormikTouched } from "formik";
 import { InitialValues } from "../Form";
 
 type SkillsFieldsProps = {
   values: InitialValues;
+  errors: FormikErrors<InitialValues>;
+  touched: FormikTouched<InitialValues>;
 };
 
-export default function SkillsFields({ values }: SkillsFieldsProps) {
+export default function SkillsFields({
+  values,
+  errors,
+  touched,
+}: SkillsFieldsProps) {
   return (
     <>
       <span>Skills</span>
@@ -19,6 +25,9 @@ export default function SkillsFields({ values }: SkillsFieldsProps) {
                   id={`skills[${index}]`}
                   type="text"
                 />
+                {errors.skills && touched.skills ? (
+                  <span>{errors.skills[index]}</span>
+                ) : null}
                 {index !== 0 && (
                   <button type="button" onClick={() => remove(index)}>
                     X

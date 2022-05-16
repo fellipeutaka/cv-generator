@@ -1,0 +1,19 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+}
+
+input {
+  padding: 4px 12px;
+}
+
+label,
+span {
+  display: block;
+}

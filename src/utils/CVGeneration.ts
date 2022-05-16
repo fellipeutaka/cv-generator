@@ -15,10 +15,12 @@ export function generatePDF(values: InitialValues) {
       { text: `${values.city}, ${values.state}` },
       { text: values.phone },
       { text: values.email },
+      { text: "\n" },
       { text: "Personal description", style: "header" },
       { text: values.personalDescription },
       ...(values.hasEducation
         ? [
+            { text: "\n" },
             {
               text: "Education",
               style: "header",
@@ -45,6 +47,32 @@ export function generatePDF(values: InitialValues) {
             ]),
           ]
         : []),
+
+      ...(values.hasExperience
+        ? [
+            { text: "\n" },
+            {
+              text: "Experience",
+              style: "header",
+            },
+            values.experience!.map((experience) => [
+              {
+                text: experience.jobTitle,
+              },
+              {
+                text: `${experience.companyName}, ${experience.city}, ${experience.state}, ${experience.startYear}-${experience.endYear}`,
+              },
+              experience.jobDuty.map((duty) => ({
+                ul: [
+                  {
+                    text: duty,
+                  },
+                ],
+              })),
+            ]),
+          ]
+        : []),
+      { text: "\n" },
       {
         text: "Skills",
         style: "header",
@@ -58,6 +86,30 @@ export function generatePDF(values: InitialValues) {
           ],
         },
       ]),
+
+      ...(values.hasCertifications
+        ? [
+            { text: "\n" },
+            {
+              text: "Certifications",
+              style: "header",
+            },
+            values.certifications!.map((certification) => [
+              {
+                ul: [
+                  {
+                    text:
+                      certification.name +
+                      ", " +
+                      certification.organization +
+                      ", " +
+                      certification.yearEarned,
+                  },
+                ],
+              },
+            ]),
+          ]
+        : []),
     ],
     info: {
       title: `${values.fullName} - CV`,

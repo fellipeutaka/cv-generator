@@ -1,35 +1,36 @@
 import { FastField } from "formik";
 import { InitialValues } from "../Form";
 
-type EducationFieldProps = {
+type ExperienceFieldProps = {
   values: InitialValues;
   setFieldValue(field: string, value: any, shouldValidate?: boolean): void;
 };
 
-export default function HasEducation({
+export default function HasExperience({
   values,
   setFieldValue,
-}: EducationFieldProps) {
+}: ExperienceFieldProps) {
   return (
     <>
-      <label htmlFor="hasEducation">Has education?</label>
+      <label htmlFor="hasExperience">Has experience?</label>
       <FastField
         type="checkbox"
-        name="hasEducation"
-        id="hasEducation"
+        name="hasExperience"
+        id="hasExperience"
         onChange={() => {
-          setFieldValue("hasEducation", !values.hasEducation);
+          setFieldValue("hasExperience", !values.hasExperience);
           setFieldValue(
-            "education",
-            !values.hasEducation
+            "experience",
+            !values.hasExperience
               ? [
                   {
-                    degree: "",
-                    subjectArea: "",
-                    collegeName: "",
+                    jobTitle: "",
+                    companyName: "",
                     city: "",
                     state: "",
-                    graduationYear: "",
+                    startYear: "",
+                    endYear: "",
+                    jobDuty: [""],
                   },
                 ]
               : null
