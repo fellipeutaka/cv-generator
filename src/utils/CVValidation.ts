@@ -13,8 +13,8 @@ export const CVSchema = Yup.object().shape({
   state: Yup.string().required("State is required"),
   phone: Yup.string()
     .required("Phone is required")
-    .min(15, "Invalid year")
-    .max(15, "Invalid year"),
+    .min(15, "Invalid phone number")
+    .max(15, "Invalid phone number"),
   email: Yup.string()
     .required("E-mail is required")
     .email("Must be a valid e-mail"),
