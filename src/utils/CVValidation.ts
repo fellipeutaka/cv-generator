@@ -11,7 +11,10 @@ export const CVSchema = Yup.object().shape({
     .max(128, "Too long"),
   city: Yup.string().required("City is required"),
   state: Yup.string().required("State is required"),
-  phone: Yup.string().required("Phone is required"),
+  phone: Yup.string()
+    .required("Phone is required")
+    .min(15, "Invalid year")
+    .max(15, "Invalid year"),
   email: Yup.string()
     .required("E-mail is required")
     .email("Must be a valid e-mail"),
