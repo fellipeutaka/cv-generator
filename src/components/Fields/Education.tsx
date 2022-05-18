@@ -191,13 +191,15 @@ export default function EducationField({
               </FastField>
               {index !== 0 && (
                 <Button type="button" onClick={() => remove(index)}>
-                  X
+                  Remove education
                 </Button>
               )}
             </Flex>
           ))}
           <Button
             type="button"
+            w="100%"
+            mt={4}
             onClick={() =>
               push({
                 degree: "",
@@ -209,7 +211,7 @@ export default function EducationField({
               })
             }
           >
-            Add
+            Add new education
           </Button>
         </>
       )}

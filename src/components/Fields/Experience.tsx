@@ -231,8 +231,8 @@ export default function ExperienceField({
                             <FormControl
                               isInvalid={
                                 !!Errors.experience &&
-                                !!Errors.experience[experienceIndex].jobDuty &&
-                                !!Errors.experience[experienceIndex].jobDuty[
+                                !!Errors.experience[experienceIndex]?.jobDuty &&
+                                !!Errors.experience[experienceIndex]?.jobDuty[
                                   jobDutyIndex
                                 ] &&
                                 touched.experience
@@ -243,11 +243,22 @@ export default function ExperienceField({
                               >
                                 Job duty
                               </FormLabel>
-                              <Input
-                                {...field}
-                                id={`experience[${experienceIndex}].jobDuty[${jobDutyIndex}]`}
-                                placeholder="Job duty"
-                              />
+                              <Flex gap={1}>
+                                <Input
+                                  {...field}
+                                  id={`experience[${experienceIndex}].jobDuty[${jobDutyIndex}]`}
+                                  placeholder="Job duty"
+                                />
+                                {jobDutyIndex !== 0 && (
+                                  <Button
+                                    type="button"
+                                    onClick={() => remove(jobDutyIndex)}
+                                  >
+                                    X
+                                  </Button>
+                                )}
+                              </Flex>
+
                               <FormErrorMessage>
                                 {Errors.experience &&
                                   Errors.experience[experienceIndex]?.jobDuty[
@@ -257,14 +268,6 @@ export default function ExperienceField({
                             </FormControl>
                           )}
                         </FastField>
-                        {jobDutyIndex !== 0 && (
-                          <Button
-                            type="button"
-                            onClick={() => remove(jobDutyIndex)}
-                          >
-                            X
-                          </Button>
-                        )}
                       </div>
                     ))}
                     <Button type="button" onClick={() => push("")}>
@@ -275,13 +278,15 @@ export default function ExperienceField({
               </FieldArray>
               {experienceIndex !== 0 && (
                 <Button type="button" onClick={() => remove(experienceIndex)}>
-                  X
+                  Remove experience
                 </Button>
               )}
             </Flex>
           ))}
           <Button
             type="button"
+            w="100%"
+            mt={4}
             onClick={() =>
               push({
                 jobTitle: "",
@@ -294,7 +299,7 @@ export default function ExperienceField({
               })
             }
           >
-            Add
+            Add new experience
           </Button>
         </>
       )}

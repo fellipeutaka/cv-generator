@@ -53,10 +53,8 @@ export default function Form() {
           <Grid
             width="100%"
             minH="100vh"
-            templateColumns="3"
-            templateRows="2"
             justifyContent="center"
-            gap={24}
+            gap={12}
             templateAreas="
               'personalInfo education'
               'experience certifications'
@@ -64,45 +62,57 @@ export default function Form() {
             "
           >
             <Flex flexDir="column" gap={4} gridArea="personalInfo" w="260px">
-              <FullNameField errors={errors} touched={touched} />
-              <CityField errors={errors} touched={touched} />
-              <StateField errors={errors} touched={touched} />
-              <PhoneField errors={errors} touched={touched} />
-              <EmailField errors={errors} touched={touched} />
-              <DescriptionField errors={errors} touched={touched} />
-              <SkillsFields values={values} errors={errors} touched={touched} />
+              <Box maxH="712px" p={4} overflowY="auto">
+                <FullNameField errors={errors} touched={touched} />
+                <CityField errors={errors} touched={touched} />
+                <StateField errors={errors} touched={touched} />
+                <PhoneField errors={errors} touched={touched} />
+                <EmailField errors={errors} touched={touched} />
+                <DescriptionField errors={errors} touched={touched} />
+                <SkillsFields
+                  values={values}
+                  errors={errors}
+                  touched={touched}
+                />
+              </Box>
             </Flex>
-            <Box gridArea="education">
+            <Box gridArea="education" w="260px">
               <HasEducation values={values} setFieldValue={setFieldValue} />
               {values.hasEducation && (
-                <EducationField
-                  values={values}
-                  errors={errors}
-                  touched={touched}
-                />
+                <Box maxH="712px" p={4} overflowY="auto">
+                  <EducationField
+                    values={values}
+                    errors={errors}
+                    touched={touched}
+                  />
+                </Box>
               )}
             </Box>
-            <Box gridArea="experience">
+            <Box gridArea="experience" w="260px">
               <HasExperience values={values} setFieldValue={setFieldValue} />
               {values.hasExperience && (
-                <ExperienceField
-                  values={values}
-                  errors={errors}
-                  touched={touched}
-                />
+                <Box maxH="712px" p={4} overflowY="auto">
+                  <ExperienceField
+                    values={values}
+                    errors={errors}
+                    touched={touched}
+                  />
+                </Box>
               )}
             </Box>
-            <Box gridArea="certifications">
+            <Box gridArea="certifications" w="260px">
               <HasCertifications
                 values={values}
                 setFieldValue={setFieldValue}
               />
               {values.hasCertifications && (
-                <CertificationField
-                  values={values}
-                  errors={errors}
-                  touched={touched}
-                />
+                <Box maxH="712px" p={4} overflowY="auto">
+                  <CertificationField
+                    values={values}
+                    errors={errors}
+                    touched={touched}
+                  />
+                </Box>
               )}
             </Box>
             <Button type="submit" gridArea="submit">

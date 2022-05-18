@@ -58,8 +58,8 @@ export default function SkillsFields({
               )}
             </FastField>
           ))}
-          <Button type="button" onClick={() => push("")}>
-            Add
+          <Button type="button" w="100%" mt={4} onClick={() => push("")}>
+            Add new skill
           </Button>
         </>
       )}
