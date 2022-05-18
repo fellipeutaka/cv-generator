@@ -1,4 +1,10 @@
-import { FastField, FormikErrors, FormikTouched } from "formik";
+import {
+  FormControl,
+  FormErrorMessage,
+  FormLabel,
+  Input,
+} from "@chakra-ui/react";
+import { FastField, FastFieldProps, FormikErrors, FormikTouched } from "formik";
 import { InitialValues } from "../Form";
 
 type FullNameFieldProps = {
@@ -8,12 +14,14 @@ type FullNameFieldProps = {
 
 export default function FullNameField({ errors, touched }: FullNameFieldProps) {
   return (
-    <>
-      <label htmlFor="fullName">Full name</label>
-      <FastField name="fullName" id="fullName" type="text" />
-      {errors.fullName && touched.fullName ? (
-        <span>{errors.fullName}</span>
-      ) : null}
-    </>
+    <FastField name="fullName" type="text">
+      {({ field }: FastFieldProps) => (
+        <FormControl isInvalid={!!errors.fullName && touched.fullName}>
+          <FormLabel htmlFor="fullName">Full name</FormLabel>
+          <Input {...field} id="fullName" placeholder="Full name" />
+          <FormErrorMessage>{errors.fullName}</FormErrorMessage>
+        </FormControl>
+      )}
+    </FastField>
   );
 }

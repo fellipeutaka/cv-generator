@@ -1,4 +1,10 @@
-import { FastField, FormikErrors, FormikTouched } from "formik";
+import {
+  FormControl,
+  FormErrorMessage,
+  FormLabel,
+  Input,
+} from "@chakra-ui/react";
+import { FastField, FastFieldProps, FormikErrors, FormikTouched } from "formik";
 import { InitialValues } from "../Form";
 
 type EmailFieldProps = {
@@ -8,10 +14,14 @@ type EmailFieldProps = {
 
 export default function EmailField({ errors, touched }: EmailFieldProps) {
   return (
-    <>
-      <label htmlFor="email">E-mail</label>
-      <FastField name="email" id="email" type="text" />
-      {errors.email && touched.email ? <span>{errors.email}</span> : null}
-    </>
+    <FastField name="email" type="text">
+      {({ field }: FastFieldProps) => (
+        <FormControl isInvalid={!!errors.email && touched.email}>
+          <FormLabel htmlFor="email">E-mail</FormLabel>
+          <Input {...field} id="email" placeholder="E-mail" />
+          <FormErrorMessage>{errors.email}</FormErrorMessage>
+        </FormControl>
+      )}
+    </FastField>
   );
 }

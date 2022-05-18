@@ -1,4 +1,17 @@
-import { FastField, FieldArray, FormikErrors, FormikTouched } from "formik";
+import {
+  Button,
+  FormControl,
+  FormErrorMessage,
+  FormLabel,
+  Input,
+} from "@chakra-ui/react";
+import {
+  FastField,
+  FastFieldProps,
+  FieldArray,
+  FormikErrors,
+  FormikTouched,
+} from "formik";
 import { InitialValues } from "../Form";
 
 type ExperienceFieldProps = {
@@ -34,72 +47,176 @@ export default function ExperienceField({
         <>
           {values.experience!.map((experience, experienceIndex) => (
             <div key={experienceIndex}>
-              <label htmlFor={`experience[${experienceIndex}].jobTitle`}>
-                Job title
-              </label>
               <FastField
                 name={`experience[${experienceIndex}].jobTitle`}
-                id={`experience[${experienceIndex}].jobTitle`}
                 type="text"
-              />
-              {Errors.experience && touched.experience ? (
-                <span>{Errors.experience[experienceIndex]?.jobTitle}</span>
-              ) : null}
-              <label htmlFor={`experience[${experienceIndex}].companyName`}>
-                Company name
-              </label>
+              >
+                {({ field }: FastFieldProps) => (
+                  <FormControl
+                    isInvalid={
+                      !!Errors.experience &&
+                      !!Errors.experience[experienceIndex] &&
+                      touched.experience
+                    }
+                  >
+                    <FormLabel
+                      htmlFor={`experience[${experienceIndex}].jobTitle`}
+                    >
+                      Job title
+                    </FormLabel>
+                    <Input
+                      {...field}
+                      id={`experience[${experienceIndex}].jobTitle`}
+                      placeholder="Job title"
+                    />
+                    <FormErrorMessage>
+                      {Errors.experience &&
+                        Errors.experience[experienceIndex]?.jobTitle}
+                    </FormErrorMessage>
+                  </FormControl>
+                )}
+              </FastField>
               <FastField
                 name={`experience[${experienceIndex}].companyName`}
-                id={`experience[${experienceIndex}].companyName`}
                 type="text"
-              />
-              {Errors.experience && touched.experience ? (
-                <span>{Errors.experience[experienceIndex]?.companyName}</span>
-              ) : null}
-              <label htmlFor={`experience[${experienceIndex}].city`}>
-                City
-              </label>
+              >
+                {({ field }: FastFieldProps) => (
+                  <FormControl
+                    isInvalid={
+                      !!Errors.experience &&
+                      !!Errors.experience[experienceIndex] &&
+                      touched.experience
+                    }
+                  >
+                    <FormLabel
+                      htmlFor={`experience[${experienceIndex}].companyName`}
+                    >
+                      Company name
+                    </FormLabel>
+                    <Input
+                      {...field}
+                      id={`experience[${experienceIndex}].companyName`}
+                      placeholder="Company name"
+                    />
+                    <FormErrorMessage>
+                      {Errors.experience &&
+                        Errors.experience[experienceIndex]?.companyName}
+                    </FormErrorMessage>
+                  </FormControl>
+                )}
+              </FastField>
               <FastField
                 name={`experience[${experienceIndex}].city`}
-                id={`experience[${experienceIndex}].city`}
                 type="text"
-              />
-              {Errors.experience && touched.experience ? (
-                <span>{Errors.experience[experienceIndex]?.city}</span>
-              ) : null}
-              <label htmlFor={`experience[${experienceIndex}].state`}>
-                State
-              </label>
+              >
+                {({ field }: FastFieldProps) => (
+                  <FormControl
+                    isInvalid={
+                      !!Errors.experience &&
+                      !!Errors.experience[experienceIndex] &&
+                      touched.experience
+                    }
+                  >
+                    <FormLabel htmlFor={`experience[${experienceIndex}].city`}>
+                      City
+                    </FormLabel>
+                    <Input
+                      {...field}
+                      id={`experience[${experienceIndex}].city`}
+                      placeholder="City"
+                    />
+                    <FormErrorMessage>
+                      {Errors.experience &&
+                        Errors.experience[experienceIndex]?.city}
+                    </FormErrorMessage>
+                  </FormControl>
+                )}
+              </FastField>
               <FastField
                 name={`experience[${experienceIndex}].state`}
-                id={`experience[${experienceIndex}].state`}
                 type="text"
-              />
-              {Errors.experience && touched.experience ? (
-                <span>{Errors.experience[experienceIndex]?.state}</span>
-              ) : null}
-              <label htmlFor={`experience[${experienceIndex}].startYear`}>
-                Start year
-              </label>
+              >
+                {({ field }: FastFieldProps) => (
+                  <FormControl
+                    isInvalid={
+                      !!Errors.experience &&
+                      !!Errors.experience[experienceIndex] &&
+                      touched.experience
+                    }
+                  >
+                    <FormLabel htmlFor={`experience[${experienceIndex}].state`}>
+                      State
+                    </FormLabel>
+                    <Input
+                      {...field}
+                      id={`experience[${experienceIndex}].state`}
+                      placeholder="State"
+                    />
+                    <FormErrorMessage>
+                      {Errors.experience &&
+                        Errors.experience[experienceIndex]?.state}
+                    </FormErrorMessage>
+                  </FormControl>
+                )}
+              </FastField>
               <FastField
                 name={`experience[${experienceIndex}].startYear`}
-                id={`experience[${experienceIndex}].startYear`}
-                type="number"
-              />
-              {Errors.experience && touched.experience ? (
-                <span>{Errors.experience[experienceIndex]?.startYear}</span>
-              ) : null}
-              <label htmlFor={`experience[${experienceIndex}].endYear`}>
-                End year
-              </label>
+                type="text"
+              >
+                {({ field }: FastFieldProps) => (
+                  <FormControl
+                    isInvalid={
+                      !!Errors.experience &&
+                      !!Errors.experience[experienceIndex] &&
+                      touched.experience
+                    }
+                  >
+                    <FormLabel
+                      htmlFor={`experience[${experienceIndex}].startYear`}
+                    >
+                      Start year
+                    </FormLabel>
+                    <Input
+                      {...field}
+                      id={`experience[${experienceIndex}].startYear`}
+                      placeholder="Start year"
+                    />
+                    <FormErrorMessage>
+                      {Errors.experience &&
+                        Errors.experience[experienceIndex]?.startYear}
+                    </FormErrorMessage>
+                  </FormControl>
+                )}
+              </FastField>
               <FastField
                 name={`experience[${experienceIndex}].endYear`}
-                id={`experience[${experienceIndex}].endYear`}
-                type="number"
-              />
-              {Errors.experience && touched.experience ? (
-                <span>{Errors.experience[experienceIndex]?.endYear}</span>
-              ) : null}
+                type="text"
+              >
+                {({ field }: FastFieldProps) => (
+                  <FormControl
+                    isInvalid={
+                      !!Errors.experience &&
+                      !!Errors.experience[experienceIndex] &&
+                      touched.experience
+                    }
+                  >
+                    <FormLabel
+                      htmlFor={`experience[${experienceIndex}].endYear`}
+                    >
+                      End year
+                    </FormLabel>
+                    <Input
+                      {...field}
+                      id={`experience[${experienceIndex}].endYear`}
+                      placeholder="End year"
+                    />
+                    <FormErrorMessage>
+                      {Errors.experience &&
+                        Errors.experience[experienceIndex]?.endYear}
+                    </FormErrorMessage>
+                  </FormControl>
+                )}
+              </FastField>
               <FieldArray name={`experience[${experienceIndex}].jobDuty`}>
                 {({ remove, push }) => (
                   <>
@@ -107,42 +224,62 @@ export default function ExperienceField({
                       <div key={jobDutyIndex}>
                         <FastField
                           name={`experience[${experienceIndex}].jobDuty[${jobDutyIndex}]`}
-                          id={`experience[${experienceIndex}].jobDuty[${jobDutyIndex}]`}
                           type="text"
-                        />
-                        {Errors.experience && touched.experience ? (
-                          <span>
-                            {
-                              Errors.experience[experienceIndex]?.jobDuty[
-                                jobDutyIndex
-                              ]
-                            }
-                          </span>
-                        ) : null}
+                        >
+                          {({ field }: FastFieldProps) => (
+                            <FormControl
+                              isInvalid={
+                                !!Errors.experience &&
+                                !!Errors.experience[experienceIndex].jobDuty &&
+                                !!Errors.experience[experienceIndex].jobDuty[
+                                  jobDutyIndex
+                                ] &&
+                                touched.experience
+                              }
+                            >
+                              <FormLabel
+                                htmlFor={`experience[${experienceIndex}].jobDuty[${jobDutyIndex}]`}
+                              >
+                                Job duty
+                              </FormLabel>
+                              <Input
+                                {...field}
+                                id={`experience[${experienceIndex}].jobDuty[${jobDutyIndex}]`}
+                                placeholder="Job duty"
+                              />
+                              <FormErrorMessage>
+                                {Errors.experience &&
+                                  Errors.experience[experienceIndex]?.jobDuty[
+                                    jobDutyIndex
+                                  ]}
+                              </FormErrorMessage>
+                            </FormControl>
+                          )}
+                        </FastField>
                         {jobDutyIndex !== 0 && (
-                          <button
+                          <Button
                             type="button"
                             onClick={() => remove(jobDutyIndex)}
                           >
                             X
-                          </button>
+                          </Button>
                         )}
                       </div>
                     ))}
-                    <button type="button" onClick={() => push("")}>
+                    <Button type="button" onClick={() => push("")}>
                       Add duty
-                    </button>
+                    </Button>
                   </>
                 )}
               </FieldArray>
               {experienceIndex !== 0 && (
-                <button type="button" onClick={() => remove(experienceIndex)}>
+                <Button type="button" onClick={() => remove(experienceIndex)}>
                   X
-                </button>
+                </Button>
               )}
             </div>
           ))}
-          <button
+          <Button
             type="button"
             onClick={() =>
               push({
@@ -157,7 +294,7 @@ export default function ExperienceField({
             }
           >
             Add
-          </button>
+          </Button>
         </>
       )}
     </FieldArray>

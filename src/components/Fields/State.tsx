@@ -1,4 +1,10 @@
-import { FastField, FormikErrors, FormikTouched } from "formik";
+import {
+  FormControl,
+  FormErrorMessage,
+  FormLabel,
+  Input,
+} from "@chakra-ui/react";
+import { FastField, FastFieldProps, FormikErrors, FormikTouched } from "formik";
 import { InitialValues } from "../Form";
 
 type StateFieldProps = {
@@ -8,10 +14,14 @@ type StateFieldProps = {
 
 export default function StateField({ errors, touched }: StateFieldProps) {
   return (
-    <>
-      <label htmlFor="state">State</label>
-      <FastField name="state" id="state" type="text" />
-      {errors.state && touched.state ? <span>{errors.state}</span> : null}
-    </>
+    <FastField name="state" type="text">
+      {({ field }: FastFieldProps) => (
+        <FormControl isInvalid={!!errors.state && touched.state}>
+          <FormLabel htmlFor="state">State</FormLabel>
+          <Input {...field} id="state" placeholder="State" />
+          <FormErrorMessage>{errors.state}</FormErrorMessage>
+        </FormControl>
+      )}
+    </FastField>
   );
 }

@@ -1,3 +1,4 @@
+import { Button } from "@chakra-ui/react";
 import { Form as FormikForm, Formik } from "formik";
 import { CV } from "../types/CV";
 import { generatePDF } from "../utils/CVGeneration";
@@ -45,10 +46,7 @@ export default function Form() {
     <Formik
       initialValues={initialValues}
       validationSchema={CVSchema}
-      onSubmit={(values) => {
-        console.log(values);
-        generatePDF(values);
-      }}
+      onSubmit={(values) => generatePDF(values)}
     >
       {({ values, setFieldValue, errors, touched }) => (
         <FormikForm>
@@ -79,7 +77,7 @@ export default function Form() {
               touched={touched}
             />
           )}
-          <button type="submit">Submit</button>
+          <Button type="submit">Submit</Button>
         </FormikForm>
       )}
     </Formik>

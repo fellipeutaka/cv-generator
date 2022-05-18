@@ -1,4 +1,10 @@
-import { FastField, FormikErrors, FormikTouched } from "formik";
+import {
+  FormControl,
+  FormErrorMessage,
+  FormLabel,
+  Input,
+} from "@chakra-ui/react";
+import { FastField, FastFieldProps, FormikErrors, FormikTouched } from "formik";
 import { InitialValues } from "../Form";
 
 type DescriptionFieldProps = {
@@ -11,16 +17,24 @@ export default function DescriptionField({
   touched,
 }: DescriptionFieldProps) {
   return (
-    <>
-      <label htmlFor="personalDescription">Personal description</label>
-      <FastField
-        name="personalDescription"
-        id="personalDescription"
-        type="text"
-      />
-      {errors.personalDescription && touched.personalDescription ? (
-        <span>{errors.personalDescription}</span>
-      ) : null}
-    </>
+    <FastField name="personalDescription" type="text">
+      {({ field }: FastFieldProps) => (
+        <FormControl
+          isInvalid={
+            !!errors.personalDescription && touched.personalDescription
+          }
+        >
+          <FormLabel htmlFor="personalDescription">
+            Personal description
+          </FormLabel>
+          <Input
+            {...field}
+            id="personalDescription"
+            placeholder="Personal description"
+          />
+          <FormErrorMessage>{errors.personalDescription}</FormErrorMessage>
+        </FormControl>
+      )}
+    </FastField>
   );
 }

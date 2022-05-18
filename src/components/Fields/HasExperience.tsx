@@ -1,4 +1,5 @@
-import { FastField } from "formik";
+import { Checkbox, FormControl, FormLabel } from "@chakra-ui/react";
+import { FastField, FastFieldProps } from "formik";
 import { InitialValues } from "../Form";
 
 type ExperienceFieldProps = {
@@ -11,32 +12,36 @@ export default function HasExperience({
   setFieldValue,
 }: ExperienceFieldProps) {
   return (
-    <>
-      <label htmlFor="hasExperience">Has experience?</label>
-      <FastField
-        type="checkbox"
-        name="hasExperience"
-        id="hasExperience"
-        onChange={() => {
-          setFieldValue("hasExperience", !values.hasExperience);
-          setFieldValue(
-            "experience",
-            !values.hasExperience
-              ? [
-                  {
-                    jobTitle: "",
-                    companyName: "",
-                    city: "",
-                    state: "",
-                    startYear: "",
-                    endYear: "",
-                    jobDuty: [""],
-                  },
-                ]
-              : null
-          );
-        }}
-      />
-    </>
+    <FastField name="hasExperience">
+      {({ field }: FastFieldProps) => (
+        <FormControl>
+          <FormLabel htmlFor="hasExperience">Has experience?</FormLabel>
+          <Checkbox
+            {...field}
+            id="hasExperience"
+            isChecked={values.hasExperience}
+            onChange={() => {
+              setFieldValue("hasExperience", !values.hasExperience);
+              setFieldValue(
+                "experience",
+                !values.hasExperience
+                  ? [
+                      {
+                        jobTitle: "",
+                        companyName: "",
+                        city: "",
+                        state: "",
+                        startYear: "",
+                        endYear: "",
+                        jobDuty: [""],
+                      },
+                    ]
+                  : null
+              );
+            }}
+          />
+        </FormControl>
+      )}
+    </FastField>
   );
 }

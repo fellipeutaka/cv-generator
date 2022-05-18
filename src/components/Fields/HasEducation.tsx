@@ -1,4 +1,5 @@
-import { FastField } from "formik";
+import { Checkbox, FormControl, FormLabel } from "@chakra-ui/react";
+import { FastField, FastFieldProps } from "formik";
 import { InitialValues } from "../Form";
 
 type EducationFieldProps = {
@@ -11,31 +12,35 @@ export default function HasEducation({
   setFieldValue,
 }: EducationFieldProps) {
   return (
-    <>
-      <label htmlFor="hasEducation">Has education?</label>
-      <FastField
-        type="checkbox"
-        name="hasEducation"
-        id="hasEducation"
-        onChange={() => {
-          setFieldValue("hasEducation", !values.hasEducation);
-          setFieldValue(
-            "education",
-            !values.hasEducation
-              ? [
-                  {
-                    degree: "",
-                    subjectArea: "",
-                    collegeName: "",
-                    city: "",
-                    state: "",
-                    graduationYear: "",
-                  },
-                ]
-              : null
-          );
-        }}
-      />
-    </>
+    <FastField name="hasEducation">
+      {({ field }: FastFieldProps) => (
+        <FormControl>
+          <FormLabel htmlFor="hasEducation">Has education?</FormLabel>
+          <Checkbox
+            {...field}
+            id="hasEducation"
+            isChecked={values.hasEducation}
+            onChange={() => {
+              setFieldValue("hasEducation", !values.hasEducation);
+              setFieldValue(
+                "education",
+                !values.hasEducation
+                  ? [
+                      {
+                        degree: "",
+                        subjectArea: "",
+                        collegeName: "",
+                        city: "",
+                        state: "",
+                        graduationYear: "",
+                      },
+                    ]
+                  : null
+              );
+            }}
+          />
+        </FormControl>
+      )}
+    </FastField>
   );
 }

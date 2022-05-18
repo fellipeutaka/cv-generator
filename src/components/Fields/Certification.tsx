@@ -1,4 +1,17 @@
-import { FastField, FieldArray, FormikErrors, FormikTouched } from "formik";
+import {
+  Button,
+  FormControl,
+  FormErrorMessage,
+  FormLabel,
+  Input,
+} from "@chakra-ui/react";
+import {
+  FastField,
+  FastFieldProps,
+  FieldArray,
+  FormikErrors,
+  FormikTouched,
+} from "formik";
 import { InitialValues } from "../Form";
 
 type CertificationFieldProps = {
@@ -30,45 +43,95 @@ export default function CertificationField({
         <>
           {values.certifications!.map((_, index) => (
             <div key={index}>
-              <label htmlFor={`certifications[${index}].name`}>Name</label>
-              <FastField
-                name={`certifications[${index}].name`}
-                id={`certifications[${index}].name`}
-                type="text"
-              />
-              {Errors.certifications && touched.certifications ? (
-                <span>{Errors.certifications[index]?.name}</span>
-              ) : null}
-              <label htmlFor={`certifications[${index}].organization`}>
-                Organization
-              </label>
+              <FastField name={`certifications[${index}].name`} type="text">
+                {({ field }: FastFieldProps) => (
+                  <FormControl
+                    isInvalid={
+                      !!Errors.certifications &&
+                      !!Errors.certifications[index] &&
+                      touched.certifications
+                    }
+                  >
+                    <FormLabel htmlFor={`certifications[${index}].name`}>
+                      Name
+                    </FormLabel>
+                    <Input
+                      {...field}
+                      id={`certifications[${index}].name`}
+                      placeholder="Name"
+                    />
+                    <FormErrorMessage>
+                      {Errors.certifications &&
+                        Errors.certifications[index]?.name}
+                    </FormErrorMessage>
+                  </FormControl>
+                )}
+              </FastField>
               <FastField
                 name={`certifications[${index}].organization`}
-                id={`certifications[${index}].organization`}
                 type="text"
-              />
-              {Errors.certifications && touched.certifications ? (
-                <span>{Errors.certifications[index]?.organization}</span>
-              ) : null}
-              <label htmlFor={`certifications[${index}].yearEarned`}>
-                Year earned
-              </label>
+              >
+                {({ field }: FastFieldProps) => (
+                  <FormControl
+                    isInvalid={
+                      !!Errors.certifications &&
+                      !!Errors.certifications[index] &&
+                      touched.certifications
+                    }
+                  >
+                    <FormLabel
+                      htmlFor={`certifications[${index}].organization`}
+                    >
+                      Organization
+                    </FormLabel>
+                    <Input
+                      {...field}
+                      id={`certifications[${index}].organization`}
+                      placeholder="Organization"
+                    />
+                    <FormErrorMessage>
+                      {Errors.certifications &&
+                        Errors.certifications[index]?.organization}
+                    </FormErrorMessage>
+                  </FormControl>
+                )}
+              </FastField>
               <FastField
                 name={`certifications[${index}].yearEarned`}
-                id={`certifications[${index}].yearEarned`}
-                type="number"
-              />
-              {Errors.certifications && touched.certifications ? (
-                <span>{Errors.certifications[index]?.yearEarned}</span>
-              ) : null}
+                type="text"
+              >
+                {({ field }: FastFieldProps) => (
+                  <FormControl
+                    isInvalid={
+                      !!Errors.certifications &&
+                      !!Errors.certifications[index] &&
+                      touched.certifications
+                    }
+                  >
+                    <FormLabel htmlFor={`certifications[${index}].yearEarned`}>
+                      Year earned
+                    </FormLabel>
+                    <Input
+                      {...field}
+                      type="number"
+                      id={`certifications[${index}].yearEarned`}
+                      placeholder="Year earned"
+                    />
+                    <FormErrorMessage>
+                      {Errors.certifications &&
+                        Errors.certifications[index]?.yearEarned}
+                    </FormErrorMessage>
+                  </FormControl>
+                )}
+              </FastField>
               {index !== 0 && (
-                <button type="button" onClick={() => remove(index)}>
+                <Button type="button" onClick={() => remove(index)}>
                   X
-                </button>
+                </Button>
               )}
             </div>
           ))}
-          <button
+          <Button
             type="button"
             onClick={() =>
               push({
@@ -79,7 +142,7 @@ export default function CertificationField({
             }
           >
             Add
-          </button>
+          </Button>
         </>
       )}
     </FieldArray>
