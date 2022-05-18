@@ -1,5 +1,6 @@
 import {
   Button,
+  Flex,
   FormControl,
   FormErrorMessage,
   FormLabel,
@@ -42,7 +43,7 @@ export default function CertificationField({
       {({ remove, push }) => (
         <>
           {values.certifications!.map((_, index) => (
-            <div key={index}>
+            <Flex flexDir="column" gap={4} key={index}>
               <FastField name={`certifications[${index}].name`} type="text">
                 {({ field }: FastFieldProps) => (
                   <FormControl
@@ -129,7 +130,7 @@ export default function CertificationField({
                   X
                 </Button>
               )}
-            </div>
+            </Flex>
           ))}
           <Button
             type="button"

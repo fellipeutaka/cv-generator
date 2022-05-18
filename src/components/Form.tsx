@@ -1,4 +1,4 @@
-import { Button } from "@chakra-ui/react";
+import { Box, Button, Flex, Grid } from "@chakra-ui/react";
 import { Form as FormikForm, Formik } from "formik";
 import { CV } from "../types/CV";
 import { generatePDF } from "../utils/CVGeneration";
@@ -48,36 +48,67 @@ export default function Form() {
       validationSchema={CVSchema}
       onSubmit={(values) => generatePDF(values)}
     >
-      {({ values, setFieldValue, errors, touched }) => (
+      {({ values, errors, touched, setFieldValue }) => (
         <FormikForm>
-          <FullNameField errors={errors} touched={touched} />
-          <CityField errors={errors} touched={touched} />
-          <StateField errors={errors} touched={touched} />
-          <PhoneField errors={errors} touched={touched} />
-          <EmailField errors={errors} touched={touched} />
-          <DescriptionField errors={errors} touched={touched} />
-          <HasEducation values={values} setFieldValue={setFieldValue} />
-          {values.hasEducation && (
-            <EducationField values={values} errors={errors} touched={touched} />
-          )}
-          <HasExperience values={values} setFieldValue={setFieldValue} />
-          {values.hasExperience && (
-            <ExperienceField
-              values={values}
-              errors={errors}
-              touched={touched}
-            />
-          )}
-          <SkillsFields values={values} errors={errors} touched={touched} />
-          <HasCertifications values={values} setFieldValue={setFieldValue} />
-          {values.hasCertifications && (
-            <CertificationField
-              values={values}
-              errors={errors}
-              touched={touched}
-            />
-          )}
-          <Button type="submit">Submit</Button>
+          <Grid
+            width="100%"
+            minH="100vh"
+            templateColumns="3"
+            templateRows="2"
+            justifyContent="center"
+            gap={24}
+            templateAreas="
+              'personalInfo education'
+              'experience certifications'
+              'submit submit'
+            "
+          >
+            <Flex flexDir="column" gap={4} gridArea="personalInfo" w="260px">
+              <FullNameField errors={errors} touched={touched} />
+              <CityField errors={errors} touched={touched} />
+              <StateField errors={errors} touched={touched} />
+              <PhoneField errors={errors} touched={touched} />
+              <EmailField errors={errors} touched={touched} />
+              <DescriptionField errors={errors} touched={touched} />
+              <SkillsFields values={values} errors={errors} touched={touched} />
+            </Flex>
+            <Box gridArea="education">
+              <HasEducation values={values} setFieldValue={setFieldValue} />
+              {values.hasEducation && (
+                <EducationField
+                  values={values}
+                  errors={errors}
+                  touched={touched}
+                />
+              )}
+            </Box>
+            <Box gridArea="experience">
+              <HasExperience values={values} setFieldValue={setFieldValue} />
+              {values.hasExperience && (
+                <ExperienceField
+                  values={values}
+                  errors={errors}
+                  touched={touched}
+                />
+              )}
+            </Box>
+            <Box gridArea="certifications">
+              <HasCertifications
+                values={values}
+                setFieldValue={setFieldValue}
+              />
+              {values.hasCertifications && (
+                <CertificationField
+                  values={values}
+                  errors={errors}
+                  touched={touched}
+                />
+              )}
+            </Box>
+            <Button type="submit" gridArea="submit">
+              Submit
+            </Button>
+          </Grid>
         </FormikForm>
       )}
     </Formik>

@@ -2,7 +2,7 @@ import {
   FormControl,
   FormErrorMessage,
   FormLabel,
-  Input,
+  Textarea,
 } from "@chakra-ui/react";
 import { FastField, FastFieldProps, FormikErrors, FormikTouched } from "formik";
 import { InitialValues } from "../Form";
@@ -27,8 +27,9 @@ export default function DescriptionField({
           <FormLabel htmlFor="personalDescription">
             Personal description
           </FormLabel>
-          <Input
+          <Textarea
             {...field}
+            maxH="128px"
             id="personalDescription"
             placeholder="Personal description"
           />

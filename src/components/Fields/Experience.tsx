@@ -1,5 +1,6 @@
 import {
   Button,
+  Flex,
   FormControl,
   FormErrorMessage,
   FormLabel,
@@ -46,7 +47,7 @@ export default function ExperienceField({
       {({ remove, push }) => (
         <>
           {values.experience!.map((experience, experienceIndex) => (
-            <div key={experienceIndex}>
+            <Flex flexDir="column" gap={4} key={experienceIndex}>
               <FastField
                 name={`experience[${experienceIndex}].jobTitle`}
                 type="text"
@@ -277,7 +278,7 @@ export default function ExperienceField({
                   X
                 </Button>
               )}
-            </div>
+            </Flex>
           ))}
           <Button
             type="button"

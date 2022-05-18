@@ -1,5 +1,6 @@
 import {
   Button,
+  Flex,
   FormControl,
   FormErrorMessage,
   FormLabel,
@@ -45,7 +46,7 @@ export default function EducationField({
       {({ remove, push }) => (
         <>
           {values.education!.map((_, index) => (
-            <div key={index}>
+            <Flex flexDir="column" gap={4} key={index}>
               <FastField name={`education[${index}].degree`} type="text">
                 {({ field }: FastFieldProps) => (
                   <FormControl
@@ -193,7 +194,7 @@ export default function EducationField({
                   X
                 </Button>
               )}
-            </div>
+            </Flex>
           ))}
           <Button
             type="button"

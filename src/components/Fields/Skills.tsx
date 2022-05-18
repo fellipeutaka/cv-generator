@@ -32,33 +32,31 @@ export default function SkillsFields({
         <>
           <FormLabel htmlFor="skills[0]">Skills</FormLabel>
           {values.skills.map((_, index) => (
-            <Flex key={index}>
-              <FastField name={`skills[${index}]`} type="text">
-                {({ field }: FastFieldProps) => (
-                  <FormControl
-                    isInvalid={
-                      !!errors.skills &&
-                      !!errors.skills[index] &&
-                      touched.skills
-                    }
-                  >
+            <FastField name={`skills[${index}]`} type="text" key={index}>
+              {({ field }: FastFieldProps) => (
+                <FormControl
+                  isInvalid={
+                    !!errors.skills && !!errors.skills[index] && touched.skills
+                  }
+                >
+                  <Flex gap={1}>
                     <Input
                       {...field}
                       id={`skills[${index}]`}
                       placeholder="Skill"
                     />
-                    <FormErrorMessage>
-                      {errors.skills && errors.skills[index]}
-                    </FormErrorMessage>
                     {index !== 0 && (
                       <Button type="button" onClick={() => remove(index)}>
                         X
                       </Button>
                     )}
-                  </FormControl>
-                )}
-              </FastField>
-            </Flex>
+                  </Flex>
+                  <FormErrorMessage>
+                    {errors.skills && errors.skills[index]}
+                  </FormErrorMessage>
+                </FormControl>
+              )}
+            </FastField>
           ))}
           <Button type="button" onClick={() => push("")}>
             Add
