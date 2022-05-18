@@ -25,7 +25,6 @@ export default function PhoneField({ errors, touched }: PhoneFieldProps) {
             as={InputMask}
             mask="(99) 99999-9999"
             placeholder="(__) _____-____"
-            maskChar={null}
           />
           <FormErrorMessage>{errors.phone}</FormErrorMessage>
         </FormControl>
