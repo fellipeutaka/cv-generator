@@ -54,6 +54,7 @@ export default function Form() {
             width="100%"
             minH="100vh"
             justifyContent="center"
+            alignContent="center"
             gap={12}
             templateAreas="
               'personalInfo education'
@@ -62,7 +63,7 @@ export default function Form() {
             "
           >
             <Flex flexDir="column" gap={4} gridArea="personalInfo" w="260px">
-              <Box maxH="712px" p={4} overflowY="auto">
+              <Box maxH="712px" px={4} pb={2} overflowY="auto">
                 <FullNameField errors={errors} touched={touched} />
                 <CityField errors={errors} touched={touched} />
                 <StateField errors={errors} touched={touched} />
@@ -79,7 +80,7 @@ export default function Form() {
             <Box gridArea="education" w="260px">
               <HasEducation values={values} setFieldValue={setFieldValue} />
               {values.hasEducation && (
-                <Box maxH="712px" p={4} overflowY="auto">
+                <Box maxH="712px" px={4} pb={2} overflowY="auto">
                   <EducationField
                     values={values}
                     errors={errors}
@@ -91,7 +92,7 @@ export default function Form() {
             <Box gridArea="experience" w="260px">
               <HasExperience values={values} setFieldValue={setFieldValue} />
               {values.hasExperience && (
-                <Box maxH="712px" p={4} overflowY="auto">
+                <Box maxH="712px" px={4} pb={2} overflowY="auto">
                   <ExperienceField
                     values={values}
                     errors={errors}
@@ -106,7 +107,7 @@ export default function Form() {
                 setFieldValue={setFieldValue}
               />
               {values.hasCertifications && (
-                <Box maxH="712px" p={4} overflowY="auto">
+                <Box maxH="712px" px={4} pb={2} overflowY="auto">
                   <CertificationField
                     values={values}
                     errors={errors}

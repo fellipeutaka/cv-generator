@@ -7,7 +7,7 @@ export default function Footer() {
       justifyContent="center"
       alignItems="center"
       flexDir="column"
-      gap={4}
+      h="70px"
     >
       <Text>
         Developed with
