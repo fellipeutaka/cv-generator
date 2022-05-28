@@ -1,8 +1,9 @@
-import { Box, Button, Flex, Grid } from "@chakra-ui/react";
+import { Box, Flex, Grid } from "@chakra-ui/react";
 import { Form as FormikForm, Formik } from "formik";
 import { CV } from "../types/CV";
 import { generatePDF } from "../utils/CVGeneration";
 import { CVSchema } from "../utils/CVValidation";
+import Button from "./Button";
 import CertificationField from "./Fields/Certification";
 import CityField from "./Fields/City";
 import DescriptionField from "./Fields/Description";
@@ -56,11 +57,21 @@ export default function Form() {
             justifyContent="center"
             alignContent="center"
             gap={12}
-            templateAreas="
-              'personalInfo education'
-              'experience certifications'
-              'submit submit'
-            "
+            mt={[4, 0]}
+            templateAreas={[
+              `
+            'personalInfo'
+            'education'
+            'experience'
+            'certifications'
+            'submit'
+              `,
+              `
+            'personalInfo education'
+            'experience certifications'
+            'submit submit'
+              `,
+            ]}
           >
             <Flex gridArea="personalInfo" w="260px">
               <Box maxH="712px" px={4} pb={2} overflowY="auto">
@@ -118,17 +129,7 @@ export default function Form() {
                 </Box>
               )}
             </Box>
-            <Button
-              type="submit"
-              gridArea="submit"
-              colorScheme="purple"
-              color="white"
-              bgColor="purple.400"
-              _hover={{ bgColor: "purple.500" }}
-              _focus={{
-                boxShadow: "0 0 0 3px var(--chakra-colors-purple-500)",
-              }}
-            >
+            <Button type="submit" gridArea="submit">
               Submit
             </Button>
           </Grid>

@@ -1,5 +1,4 @@
 import {
-  Button,
   Flex,
   FormControl,
   FormErrorMessage,
@@ -12,6 +11,7 @@ import {
   FormikErrors,
   FormikTouched,
 } from "formik";
+import Button from "../Button";
 import { InitialValues } from "../Form";
 import Input from "../Input";
 
@@ -62,7 +62,7 @@ export default function SkillsFields({
               </FastField>
             ))}
           </Flex>
-          <Button type="button" w="100%" mt={4} onClick={() => push("")}>
+          <Button type="button" onClick={() => push("")}>
             Add new skill
           </Button>
         </>

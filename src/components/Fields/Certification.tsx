@@ -1,5 +1,4 @@
 import {
-  Button,
   Divider,
   Flex,
   FormControl,
@@ -13,6 +12,7 @@ import {
   FormikErrors,
   FormikTouched,
 } from "formik";
+import Button from "../Button";
 import { InitialValues } from "../Form";
 import Input from "../Input";
 
@@ -129,14 +129,14 @@ export default function CertificationField({
               </FastField>
               {index !== 0 && (
                 <Button type="button" onClick={() => remove(index)}>
-                  X
+                  Remove certification
                 </Button>
               )}
             </Flex>
           ))}
           <Button
             type="button"
-            mt={4}
+            sizeWidth="full"
             onClick={() =>
               push({
                 name: "",

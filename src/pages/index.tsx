@@ -1,4 +1,4 @@
-import { Flex, Heading, Link, Text } from "@chakra-ui/react";
+import { Box, Flex, Heading, Link, Text } from "@chakra-ui/react";
 import NextLink from "next/link";
 import CVIlustration from "../components/CVIlustration";
 import Layout from "../components/Layout";
@@ -16,12 +16,21 @@ export default function Home() {
         minH="calc(100vh - 70px)"
         justifyContent="center"
         alignItems="center"
+        flexDir={["column", "row"]}
       >
-        <Flex as="section" flexDir="column" gap={8}>
-          <Heading as="h1" size="2xl" maxW="40vw">
+        <Flex
+          as="section"
+          flexDir="column"
+          gap={8}
+          textAlign={["center", "left"]}
+          alignItems={["center", "flex-start"]}
+          px={[12, 0]}
+          pt={[12, 0]}
+        >
+          <Heading as="h1" size="2xl" maxW={["100%", "40vw"]}>
             CV Generator helps you to generate your CV
           </Heading>
-          <Text maxW="25vw" fontSize="20px">
+          <Text maxW={["100%", "25vw"]} fontSize="20px">
             Build your resume fast and easy. It&apos;s free!
           </Text>
           <NextLink href="/app" passHref>
@@ -45,9 +54,9 @@ export default function Home() {
             </Link>
           </NextLink>
         </Flex>
-        <section>
+        <Box as="section" px={[12, 0]}>
           <CVIlustration />
-        </section>
+        </Box>
       </Flex>
     </Layout>
   );

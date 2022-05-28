@@ -7,6 +7,7 @@ export default function CVIlustration() {
       height="600"
       viewBox="0 0 800 700"
       xmlnsXlink="http://www.w3.org/1999/xlink"
+      style={{ maxWidth: "100%", maxHeight: "100%" }}
     >
       <path
         d="M686.53634,740.28385c12.1195,8.122,25.928,49.18,25.928,49.18s-43.22554,2.81814-55.34146-5.29978a26.41318,26.41318,0,1,1,29.41342-43.88023Z"
