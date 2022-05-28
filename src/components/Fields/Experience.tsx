@@ -1,10 +1,10 @@
 import {
   Button,
+  Divider,
   Flex,
   FormControl,
   FormErrorMessage,
   FormLabel,
-  Input,
 } from "@chakra-ui/react";
 import {
   FastField,
@@ -14,6 +14,7 @@ import {
   FormikTouched,
 } from "formik";
 import { InitialValues } from "../Form";
+import Input from "../Input";
 
 type ExperienceFieldProps = {
   values: InitialValues;
@@ -48,6 +49,7 @@ export default function ExperienceField({
         <>
           {values.experience!.map((experience, experienceIndex) => (
             <Flex flexDir="column" gap={4} key={experienceIndex}>
+              {experienceIndex > 0 && <Divider mt={4} mb={-2} />}
               <FastField
                 name={`experience[${experienceIndex}].jobTitle`}
                 type="text"

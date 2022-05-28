@@ -1,10 +1,10 @@
 import {
   Button,
+  Divider,
   Flex,
   FormControl,
   FormErrorMessage,
   FormLabel,
-  Input,
 } from "@chakra-ui/react";
 import {
   FastField,
@@ -14,6 +14,7 @@ import {
   FormikTouched,
 } from "formik";
 import { InitialValues } from "../Form";
+import Input from "../Input";
 
 type CertificationFieldProps = {
   values: InitialValues;
@@ -44,6 +45,7 @@ export default function CertificationField({
         <>
           {values.certifications!.map((_, index) => (
             <Flex flexDir="column" gap={4} key={index}>
+              {index > 0 && <Divider mt={4} mb={-2} />}
               <FastField name={`certifications[${index}].name`} type="text">
                 {({ field }: FastFieldProps) => (
                   <FormControl
@@ -134,6 +136,7 @@ export default function CertificationField({
           ))}
           <Button
             type="button"
+            mt={4}
             onClick={() =>
               push({
                 name: "",

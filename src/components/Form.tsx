@@ -62,19 +62,21 @@ export default function Form() {
               'submit submit'
             "
           >
-            <Flex flexDir="column" gap={4} gridArea="personalInfo" w="260px">
+            <Flex gridArea="personalInfo" w="260px">
               <Box maxH="712px" px={4} pb={2} overflowY="auto">
-                <FullNameField errors={errors} touched={touched} />
-                <CityField errors={errors} touched={touched} />
-                <StateField errors={errors} touched={touched} />
-                <PhoneField errors={errors} touched={touched} />
-                <EmailField errors={errors} touched={touched} />
-                <DescriptionField errors={errors} touched={touched} />
-                <SkillsFields
-                  values={values}
-                  errors={errors}
-                  touched={touched}
-                />
+                <Flex flexDir="column" gap={4}>
+                  <FullNameField errors={errors} touched={touched} />
+                  <CityField errors={errors} touched={touched} />
+                  <StateField errors={errors} touched={touched} />
+                  <PhoneField errors={errors} touched={touched} />
+                  <EmailField errors={errors} touched={touched} />
+                  <DescriptionField errors={errors} touched={touched} />
+                  <SkillsFields
+                    values={values}
+                    errors={errors}
+                    touched={touched}
+                  />
+                </Flex>
               </Box>
             </Flex>
             <Box gridArea="education" w="260px">
@@ -116,7 +118,17 @@ export default function Form() {
                 </Box>
               )}
             </Box>
-            <Button type="submit" gridArea="submit">
+            <Button
+              type="submit"
+              gridArea="submit"
+              colorScheme="purple"
+              color="white"
+              bgColor="purple.400"
+              _hover={{ bgColor: "purple.500" }}
+              _focus={{
+                boxShadow: "0 0 0 3px var(--chakra-colors-purple-500)",
+              }}
+            >
               Submit
             </Button>
           </Grid>

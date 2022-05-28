@@ -32,6 +32,7 @@ export default function DescriptionField({
             maxH="128px"
             id="personalDescription"
             placeholder="Personal description"
+            focusBorderColor="purple.500"
           />
           <FormErrorMessage>{errors.personalDescription}</FormErrorMessage>
         </FormControl>

@@ -1,5 +1,6 @@
-import { Checkbox, FormControl, FormLabel } from "@chakra-ui/react";
+import { FormControl, FormLabel } from "@chakra-ui/react";
 import { FastField, FastFieldProps } from "formik";
+import Checkbox from "../Checkbox";
 import { InitialValues } from "../Form";
 
 type EducationFieldProps = {

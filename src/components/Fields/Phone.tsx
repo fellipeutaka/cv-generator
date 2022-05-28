@@ -23,6 +23,7 @@ export default function PhoneField({ errors, touched }: PhoneFieldProps) {
             {...field}
             id="phone"
             as={InputMask}
+            focusBorderColor="purple.500"
             mask="(99) 99999-9999"
             placeholder="(__) _____-____"
           />

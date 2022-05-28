@@ -4,7 +4,6 @@ import {
   FormControl,
   FormErrorMessage,
   FormLabel,
-  Input,
 } from "@chakra-ui/react";
 import {
   FastField,
@@ -14,6 +13,7 @@ import {
   FormikTouched,
 } from "formik";
 import { InitialValues } from "../Form";
+import Input from "../Input";
 
 type SkillsFieldsProps = {
   values: InitialValues;

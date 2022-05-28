@@ -1,10 +1,10 @@
 import {
   Button,
+  Divider,
   Flex,
   FormControl,
   FormErrorMessage,
   FormLabel,
-  Input,
 } from "@chakra-ui/react";
 import {
   FastField,
@@ -14,6 +14,7 @@ import {
   FormikTouched,
 } from "formik";
 import { InitialValues } from "../Form";
+import Input from "../Input";
 
 type EducationFieldProps = {
   values: InitialValues;
@@ -47,6 +48,7 @@ export default function EducationField({
         <>
           {values.education!.map((_, index) => (
             <Flex flexDir="column" gap={4} key={index}>
+              {index > 0 && <Divider mt={4} mb={-2} />}
               <FastField name={`education[${index}].degree`} type="text">
                 {({ field }: FastFieldProps) => (
                   <FormControl
